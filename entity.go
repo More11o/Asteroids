@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"reflect"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
@@ -46,7 +47,7 @@ func (e *entity) draw() error {
 	for _, component := range e.components {
 		err := component.draw()
 		if err != nil {
-			return err
+			log.Fatalf("failed to draw: %s \n", err)
 		}
 	}
 	return nil
@@ -57,7 +58,7 @@ func (e *entity) update() error {
 	for _, component := range e.components {
 		err := component.update()
 		if err != nil {
-			return err
+			log.Fatalf("failed to update entity: %s \n", err)
 		}
 	}
 	return nil

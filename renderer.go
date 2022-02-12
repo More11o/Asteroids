@@ -1,6 +1,10 @@
 package main
 
-import rl "github.com/gen2brain/raylib-go/raylib"
+import (
+	"log"
+
+	rl "github.com/gen2brain/raylib-go/raylib"
+)
 
 type renderer struct {
 	parent  *entity
@@ -12,7 +16,7 @@ func createRenderer(parent *entity, filename string) *renderer {
 
 	r.texture = rl.LoadTexture(filename)
 	if (r.texture == rl.Texture2D{}) {
-		return nil
+		log.Fatalf("failed to create texture: %s \n", filename)
 	}
 
 	r.parent = parent

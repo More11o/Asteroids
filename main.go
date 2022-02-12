@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -35,14 +33,8 @@ func main() {
 
 		for _, entity := range entities {
 			if entity.active {
-				err := entity.update()
-				if err != nil {
-					fmt.Errorf("failed to update: %v", entity)
-				}
-				err = entity.draw()
-				if err != nil {
-					fmt.Errorf("failed to draw: %v", entity)
-				}
+				entity.update()
+				entity.draw()
 			}
 		}
 		rl.EndDrawing()
