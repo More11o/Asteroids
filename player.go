@@ -24,5 +24,8 @@ func createPlayer() *entity {
 	ki := createKeyboardInput(player, playerSpeed)
 	player.addComponent(ki)
 
+	sw := createScreenWrap(player)
+	player.addComponent(sw)
+
 	return player
 }
