@@ -8,7 +8,7 @@ import (
 
 const (
 	playerSpeed        = 80
-	playerShotCooldown = time.Millisecond * 250
+	playerShotCooldown = time.Millisecond * 500
 )
 
 func createPlayer() *entity {
@@ -23,6 +23,9 @@ func createPlayer() *entity {
 
 	ki := createKeyboardInput(player, playerSpeed)
 	player.addComponent(ki)
+
+	s := createShooter(player, playerShotCooldown)
+	player.addComponent(s)
 
 	sw := createScreenWrap(player)
 	player.addComponent(sw)
