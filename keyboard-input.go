@@ -19,7 +19,6 @@ func createKeyboardInput(parent *entity, speed float32) *keyboardInput {
 }
 
 // TODO: Vector normalise movement.
-// TODO: Change movement to be relative to rotation
 func (k *keyboardInput) update() error {
 	if rl.IsKeyDown(rl.KeyLeft) {
 		k.parent.position.X -= k.speed * rl.GetFrameTime()
