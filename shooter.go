@@ -23,17 +23,23 @@ func createShooter(parent *entity, cooldown time.Duration) *shooter {
 	for i := 0; i < len(s.bulletPool); i++ {
 		b := createBullet()
 		s.bulletPool[i] = b
-		entities = append(entities, b)
 	}
 
 	return &s
 }
 
 func (s *shooter) draw() error {
+	for _, bullet := range s.bulletPool {
+		bullet.draw()
+	}
 	return nil
 }
 
 func (s *shooter) update() error {
+	for _, bullet := range s.bulletPool {
+		bullet.update()
+	}
+
 	// TODO:
 	//	This whole function needs tidying up. Do not like the use of magic numbers
 	//	and math quirks (negative y in createDumbMovement).
