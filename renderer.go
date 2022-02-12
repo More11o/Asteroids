@@ -26,8 +26,13 @@ func (r *renderer) draw() error {
 	position.X -= float32(r.texture.Width)
 	position.Y -= float32(r.texture.Height)
 
-	// FIXME: Should rotate around center point
-	rl.DrawTextureEx(r.texture, position, r.parent.rotation, r.parent.scale, rl.White)
+	rl.DrawTexturePro(
+		r.texture,
+		rl.Rectangle{X: 0, Y: 0, Width: float32(r.texture.Width), Height: float32(r.texture.Height)},
+		rl.Rectangle{X: position.X, Y: position.Y, Width: float32(r.texture.Width), Height: float32(r.texture.Height)},
+		rl.Vector2{X: float32(r.texture.Width) / 2.0, Y: float32(r.texture.Height) / 2.0},
+		r.parent.rotation,
+		rl.White)
 
 	return nil
 }
