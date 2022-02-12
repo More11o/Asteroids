@@ -33,14 +33,15 @@ func (e *entity) addComponent(new component) error {
 	return nil
 }
 
-/* func (e *entity) getComponent(c component) component {
+// entity.getComponent(componentName{}).(*componentName)
+func (e *entity) getComponent(c component) component {
 	for _, component := range e.components {
 		if reflect.TypeOf(component) == reflect.TypeOf(c) {
 			return component
 		}
 	}
 	return nil
-} */
+}
 
 // Itterate though attached componets and call thier draw function.
 func (e *entity) draw() error {
