@@ -27,8 +27,8 @@ func createRenderer(parent *entity, filename string) *renderer {
 func (r *renderer) draw() error {
 	position := r.parent.position
 
-	position.X -= float32(r.texture.Width)
-	position.Y -= float32(r.texture.Height)
+	//position.X -= float32(r.texture.Width)
+	//position.Y -= float32(r.texture.Height)
 
 	rl.DrawTexturePro(
 		r.texture,
