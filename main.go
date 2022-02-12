@@ -22,6 +22,12 @@ func main() {
 	player := createPlayer()
 	entities = append(entities, player)
 
+	ba := createBasicAsteroid(rl.Vector2{X: screenWidth / 2.0, Y: screenHeight / 2.0})
+	entities = append(entities, ba)
+
+	aa := createAdvanceAsteroid(rl.Vector2{X: screenWidth / 2.0, Y: screenHeight / 2.0})
+	entities = append(entities, aa)
+
 	for !rl.WindowShouldClose() {
 
 		rl.BeginDrawing()
