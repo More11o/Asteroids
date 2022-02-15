@@ -64,3 +64,27 @@ func (e *entity) update() error {
 	}
 	return nil
 }
+
+func (e *entity) checkCollision() error {
+
+	if e.getComponent(&collisonCircle{}) == nil {
+		return nil
+	}
+
+	cc := e.getComponent(&collisonCircle{}).(*collisonCircle)
+
+	for _, otherEntity := range entities {
+		if e == otherEntity {
+			return nil
+		}
+		if otherEntity.getComponent(&collisonCircle{}) == nil {
+			return nil
+		}
+		occ := otherEntity.getComponent(&collisonCircle{}).(*collisonCircle)
+		if rl.CheckCollisionCircles(cc.position, cc.radius, occ.position, occ.radius) {
+			e.active = false
+			occ.parent.active = false
+		}
+	}
+	return nil
+}

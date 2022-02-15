@@ -21,6 +21,9 @@ func createBasicAsteroid(position rl.Vector2) *entity {
 	sw := createScreenWrap(e)
 	e.addComponent(sw)
 
+	cc := createCollisionCircle(e, e.position, 17)
+	e.addComponent(cc)
+
 	return e
 }
 
@@ -40,6 +43,9 @@ func createAdvanceAsteroid(position rl.Vector2) *entity {
 
 	sw := createScreenWrap(e)
 	e.addComponent(sw)
+
+	cc := createCollisionCircle(e, e.position, 25)
+	e.addComponent(cc)
 
 	return e
 }

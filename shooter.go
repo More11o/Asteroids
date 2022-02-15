@@ -23,15 +23,13 @@ func createShooter(parent *entity, cooldown time.Duration) *shooter {
 	for i := 0; i < len(s.bulletPool); i++ {
 		b := createBullet()
 		s.bulletPool[i] = b
+		entities = append(entities, b)
 	}
 
 	return &s
 }
 
 func (s *shooter) draw() error {
-	for _, bullet := range s.bulletPool {
-		bullet.draw()
-	}
 	return nil
 }
 
@@ -87,6 +85,9 @@ func createBullet() *entity {
 
 	dm := createDumbMovement(b, 0.5, 0, rl.Vector2{})
 	b.addComponent(dm)
+
+	cc := createCollisionCircle(b, b.position, 5)
+	b.addComponent(cc)
 
 	return b
 }

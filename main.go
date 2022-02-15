@@ -20,10 +20,10 @@ func main() {
 	player := createPlayer()
 	entities = append(entities, player)
 
-	ba := createBasicAsteroid(rl.Vector2{X: screenWidth / 2.0, Y: screenHeight / 2.0})
+	ba := createBasicAsteroid(rl.Vector2{X: screenWidth / 3.0, Y: screenHeight / 2.0})
 	entities = append(entities, ba)
 
-	aa := createAdvanceAsteroid(rl.Vector2{X: screenWidth / 2.0, Y: screenHeight / 2.0})
+	aa := createAdvanceAsteroid(rl.Vector2{X: screenWidth / 1.5, Y: screenHeight / 2.0})
 	entities = append(entities, aa)
 
 	for !rl.WindowShouldClose() {
@@ -35,6 +35,7 @@ func main() {
 			if entity.active {
 				entity.update()
 				entity.draw()
+				entity.checkCollision()
 			}
 		}
 		rl.EndDrawing()

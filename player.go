@@ -30,5 +30,8 @@ func createPlayer() *entity {
 	sw := createScreenWrap(player)
 	player.addComponent(sw)
 
+	cc := createCollisionCircle(player, player.position, 12)
+	player.addComponent(cc)
+
 	return player
 }
